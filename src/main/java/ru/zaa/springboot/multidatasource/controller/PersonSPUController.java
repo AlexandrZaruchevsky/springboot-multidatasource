@@ -21,7 +21,7 @@ public class PersonSPUController {
     public PersonSPU getFIOFromSPU(
             @RequestParam(required = false, defaultValue = "") String sn
     ){
-        return personSPURepo.findBySn(sn);
+        return personSPURepo.findBySn(sn).trim();
     }
 
 }

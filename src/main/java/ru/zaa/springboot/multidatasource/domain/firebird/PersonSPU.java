@@ -141,4 +141,23 @@ public class PersonSPU {
         this.dReg = dReg;
     }
 
+    public PersonSPU trim(PersonSPU person){
+        person.setFm(person.getFm().trim());
+        person.setIm(person.getIm().trim());
+        person.setOt(person.getOt().trim());
+        person.setCountryBorn(person.getCountryBorn().trim());
+        person.setRegionBorn(person.getRegionBorn().trim());
+        person.setDistrictBorn(person.getDistrictBorn().trim());
+        return person;
+    }
+
+    public PersonSPU trim() {
+        fm=fm.trim();
+        im=im.trim();
+        ot=ot.trim();
+        countryBorn=countryBorn.trim();
+        regionBorn=regionBorn.trim();
+        districtBorn=districtBorn.trim();
+        return this;
+    }
 }
