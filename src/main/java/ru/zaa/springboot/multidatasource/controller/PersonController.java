@@ -20,8 +20,7 @@ public class PersonController {
 
     @GetMapping
     public List<Person> getPersons(){
-//        personRepo.save(new Person("050910020"));
-
+        personRepo.save(new Person("050910020"));
         return personRepo.findAll();
     }
 

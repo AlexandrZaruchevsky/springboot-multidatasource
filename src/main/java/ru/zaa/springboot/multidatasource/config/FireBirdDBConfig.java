@@ -38,7 +38,6 @@ public class FireBirdDBConfig {
             EntityManagerFactoryBuilder builder,
             @Qualifier("fbDatasource") DataSource dataSource
     ) {
-//        Map<String,Object> properties = new HashMap<>();
         return builder
                 .dataSource(dataSource)
                 .packages("ru.zaa.springboot.multidatasource.domain.firebird")
