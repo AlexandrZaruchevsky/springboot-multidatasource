@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sarafan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+</div>
+<script src="/js/main.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#birth-date').mask('99.99.9999');
+        $('#snils').mask('999-999-999 99');
+    });
+</script>
+</body>
+</html>

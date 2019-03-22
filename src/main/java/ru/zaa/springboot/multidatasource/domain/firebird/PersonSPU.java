@@ -1,13 +1,14 @@
 package ru.zaa.springboot.multidatasource.domain.firebird;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
-@Table(name="SN")
+@Table(name = "SN")
 public class PersonSPU {
 
     @Id
@@ -15,11 +16,22 @@ public class PersonSPU {
 
     private String sn;
     private String kch;
+
+    @JsonView(ViewPersonSPU.ShortJson.class)
     private String fm;
+    @JsonView(ViewPersonSPU.ShortJson.class)
     private String im;
+    @JsonView(ViewPersonSPU.ShortJson.class)
     private String ot;
-    private Date dtr;
+
+    private LocalDate dtr;
+
+    @JsonView(ViewPersonSPU.ShortJson.class)
     private String pol;
+
+    @Transient
+    @JsonView(ViewPersonSPU.ShortJson.class)
+    private String dtrStr;
 
     @Column(name = "COUNTRY_BORN")
     private String countryBorn;
@@ -51,7 +63,6 @@ public class PersonSPU {
         this.sn = sn;
     }
 
-
     public String getKch() {
         return kch;
     }
@@ -60,7 +71,6 @@ public class PersonSPU {
         this.kch = kch;
     }
 
-
     public String getFm() {
         return fm;
     }
@@ -68,7 +78,6 @@ public class PersonSPU {
     public void setFm(String fm) {
         this.fm = fm;
     }
-
 
     public String getIm() {
         return im;
@@ -88,11 +97,11 @@ public class PersonSPU {
     }
 
 
-    public java.sql.Date getDtr() {
+    public LocalDate getDtr() {
         return dtr;
     }
 
-    public void setDtr(java.sql.Date dtr) {
+    public void setDtr(LocalDate dtr) {
         this.dtr = dtr;
     }
 
@@ -141,7 +150,7 @@ public class PersonSPU {
         this.dReg = dReg;
     }
 
-    public PersonSPU trim(PersonSPU person){
+    public PersonSPU trim(PersonSPU person) {
         person.setFm(person.getFm().trim());
         person.setIm(person.getIm().trim());
         person.setOt(person.getOt().trim());
@@ -152,12 +161,21 @@ public class PersonSPU {
     }
 
     public PersonSPU trim() {
-        fm=fm.trim();
-        im=im.trim();
-        ot=ot.trim();
-        countryBorn=countryBorn.trim();
-        regionBorn=regionBorn.trim();
-        districtBorn=districtBorn.trim();
+        fm = fm.trim();
+        im = im.trim();
+        ot = ot.trim();
+        countryBorn = countryBorn.trim();
+        regionBorn = regionBorn.trim();
+        districtBorn = districtBorn.trim();
         return this;
+    }
+
+    public String getDtrStr() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return dtr.format(formatter);
+    }
+
+    public void setDtrStr(String dtrStr) {
+        this.dtrStr = dtrStr;
     }
 }

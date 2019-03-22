@@ -40,6 +40,9 @@ public class MySQLDBConfig {
         Map<String,Object> properties = new HashMap<String, Object>(){{
             put("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
             put("hibernate.hbm2ddl.auto","update");
+            put("hibernate.show_sql","true");
+            put("hibernate.use_sql_comments","true");
+            put("hibernate.format_sql","true");
         }};
         return builder
                 .dataSource(dataSource)
